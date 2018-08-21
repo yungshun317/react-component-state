@@ -38,7 +38,7 @@
         constructor(props) {
             super(props)
             this.state = {
-                starsSelected: 0
+                starsSelected: props.starsSelected || 0
             }
             this.change = this.change.bind(this)
         }
@@ -54,8 +54,8 @@
                 <div className="star-rating">
                     {[...Array(totalStars)].map((n, i) =>
                         <Star key={i}
-                              selected={i<starsSelected}
-                              onClick={() => this.change(i+1)}
+                              selected={i < starsSelected}
+                              onClick={() => this.change(i + 1)}
                         />
                     )}
                     <p>{starsSelected} of {totalStars} stars</p>
@@ -65,7 +65,7 @@
     }
 
     render(
-        <StarRating />,
+        <StarRating totalStars={7} starsSelected={3} />,
         document.getElementById('react-container')
     )
 </script>
